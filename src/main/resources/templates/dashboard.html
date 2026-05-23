@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <img th:src="@{/images/logo.png}">
+
+        <h2>Komplid Academy</h2>
+
+    </div>
+
+    <ul>
+        <li><a href="/" class="active">Dashboard</a></li>
+        <li><a href="/tentang">Tentang Kami</a></li>
+        <li><a href="/lulusan">Lulusan</a></li>
+        <li><a href="/program">Program</a></li>
+        <li><a href="/galeri">Galeri</a></li>
+        <li><a href="/kontak">Kontak</a></li>
+        <li><a href="/login">Logout</a></li>
+    </ul>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <div class="topbar">
+
+        <h1>Dashboard Admin</h1>
+
+        <p>Kelola seluruh data website Komplid Academy</p>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Tentang Kami</h3>
+            <p>Kelola data tentang academy</p>
+        </div>
+
+        <div class="card">
+            <h3>Lulusan</h3>
+            <p>Kelola data lulusan</p>
+        </div>
+
+        <div class="card">
+            <h3>Program</h3>
+            <p>Kelola data program</p>
+        </div>
+
+        <div class="card">
+            <h3>Galeri</h3>
+            <p>Kelola data galeri</p>
+        </div>
+
+        <div class="card">
+            <h3>Kontak</h3>
+            <p>Kelola data kontak</p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

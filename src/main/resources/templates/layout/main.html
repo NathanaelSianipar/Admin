@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komplid Academy Admin</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Komplid Academy</h2>
+
+    <a th:href="@{/tentang}">Tentang Kami</a>
+    <a th:href="@{/lulusan}">Lulusan</a>
+    <a th:href="@{/program}">Program</a>
+    <a th:href="@{/galeri}">Galeri</a>
+    <a th:href="@{/kontak}">Kontak</a>
+</div>
+
+<div class="content">
+    <div th:replace="~{::content}"></div>
+</div>
+
+</body>
+</html>
