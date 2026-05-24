@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Program - Komplid Academy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Form Tambah Program Kerja</h4>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/program/save}" th:object="${program}" method="POST">
+                            
+                            <div class="mb-3">
+                                <label for="namaProgram" class="form-label fw-bold">Nama Program</label>
+                                <input type="text" th:field="*{namaProgram}" class="form-control" id="namaProgram" placeholder="Contoh: Web Development Boot Camp" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="durasi" class="form-label fw-bold">Durasi</label>
+                                <input type="text" th:field="*{durasi}" class="form-control" id="durasi" placeholder="Contoh: 3 Bulan" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="deskripsi" class="form-label fw-bold">Deskripsi</label>
+                                <textarea th:field="*{deskripsi}" class="form-control" id="deskripsi" rows="4" placeholder="Jelaskan detail program kerja di sini..." required></textarea>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <a href="/program" class="btn btn-secondary">Batal</a>
+                                <button type="submit" class="btn btn-success">Simpan Data</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
