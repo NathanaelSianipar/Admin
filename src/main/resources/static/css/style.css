@@ -554,3 +554,23 @@ body{
     }
 
 }
+/* TEXTAREA */
+
+textarea.form-control{
+    min-height:120px;
+    resize:vertical;
+}
+
+/* DESKRIPSI PANJANG DI TABEL */
+
+.deskripsi{
+    max-width:400px;
+    white-space:normal;
+    line-height:1.5;
+}
+
+/* FORM TENGAH */
+
+.form-container{
+    margin:auto;
+}

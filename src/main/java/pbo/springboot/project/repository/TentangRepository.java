@@ -1,5 +1,8 @@
 package pbo.springboot.project.repository;
 
-public class TentangRepository {
-    
+import org.springframework.data.jpa.repository.JpaRepository;
+import pbo.springboot.project.model.Tentang;
+
+public interface TentangRepository extends JpaRepository<Tentang, Long> {
+
 }
