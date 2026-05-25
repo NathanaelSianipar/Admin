@@ -8,6 +8,16 @@ public class ProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectApplication.class, args);
-	}
+	try {
 
+            Runtime.getRuntime().exec(
+                "rundll32 url.dll,FileProtocolHandler http://localhost:8080/"
+            );
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+    }
 }
