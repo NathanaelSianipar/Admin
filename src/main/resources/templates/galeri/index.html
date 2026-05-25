@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Galeri</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <img th:src="@{/images/logo.png}">
+
+        <h2>Komplid Academy</h2>
+
+    </div>
+
+    <ul>
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/tentang">Tentang Kami</a></li>
+        <li><a href="/lulusan">Lulusan</a></li>
+        <li><a href="/program">Program</a></li>
+        <li><a href="/galeri" class="active">Galeri</a></li>
+        <li><a href="/kontak">Kontak</a></li>
+    </ul>
+
+</div>
+
+<div class="main">
+
+    <div class="table-container">
+
+        <div class="table-header">
+
+            <h2>Data Galeri</h2>
+
+            <a href="/galeri/create" class="btn">
+                + Tambah Galeri
+            </a>
+
+        </div>
+
+        <table class="table">
+
+            <thead>
+
+            <tr>
+                <th>No</th>
+                <th>Gambar</th>
+                <th>Judul</th>
+                <th>Deskripsi</th>
+                <th>Aksi</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <tr th:each="item, stat : ${galeri}">
+
+                <td th:text="${stat.count}"></td>
+
+                <td>
+                    <img th:src="@{'/uploads/' + ${item.gambar}}"
+                        class="foto">
+                </td>
+
+                <td th:text="${item.judul}"></td>
+
+                <td th:text="${item.deskripsi}"></td>
+
+                <td>
+
+                    <div class="action">
+
+                        <a th:href="@{/galeri/edit/{id}(id=${item.id})}">
+                            <button class="btn edit">
+                                Edit
+                            </button>
+                        </a>
+
+                        <a th:href="@{/galeri/delete/{id}(id=${item.id})}">
+                            <button class="btn delete">
+                                Delete
+                            </button>
+                        </a>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
