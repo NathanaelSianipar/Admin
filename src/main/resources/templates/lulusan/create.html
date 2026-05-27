@@ -39,7 +39,9 @@
 
         <br>
 
-        <form action="/lulusan/save" method="post">
+        <form action="/lulusan/save"
+      method="post"
+      enctype="multipart/form-data">
 
             <div class="form-group">
 
@@ -65,8 +67,8 @@
 
                 <label>Link Foto</label>
 
-                <input type="text"
-                       name="foto"
+                <input type="file"
+                       name="fotoFile"
                        class="form-control">
 
             </div>

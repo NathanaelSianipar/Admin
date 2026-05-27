@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import pbo.springboot.project.model.Lulusan;
 import pbo.springboot.project.repository.LulusanRepository;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+
 @Controller
 @RequestMapping("/lulusan")
 public class LulusanController {
@@ -27,11 +32,35 @@ public class LulusanController {
         return "lulusan/create";
     }
 
-    @PostMapping("/save")
-    public String save(@ModelAttribute Lulusan lulusan) {
-        repository.save(lulusan);
-        return "redirect:/lulusan";
+@PostMapping("/save")
+public String save(@ModelAttribute Lulusan lulusan,
+                   @RequestParam("fotoFile") MultipartFile file) throws IOException {
+
+    if (!file.isEmpty()) {
+
+        String fileName = System.currentTimeMillis()
+                + "_" + file.getOriginalFilename();
+
+        String uploadDir = System.getProperty("user.dir")
+                + "/uploads/";
+
+        File dir = new File(uploadDir);
+
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+
+        File destination = new File(uploadDir + fileName);
+
+        file.transferTo(destination);
+
+        lulusan.setFoto("/uploads/" + fileName);
     }
+
+    repository.save(lulusan);
+
+    return "redirect:/lulusan";
+}
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Long id, Model model) {
@@ -39,11 +68,35 @@ public class LulusanController {
         return "lulusan/edit";
     }
 
-    @PostMapping("/update")
-    public String update(@ModelAttribute Lulusan lulusan) {
-        repository.save(lulusan);
-        return "redirect:/lulusan";
+@PostMapping("/update")
+public String update(@ModelAttribute Lulusan lulusan,
+                     @RequestParam("fotoFile") MultipartFile file) throws IOException {
+
+    if (!file.isEmpty()) {
+
+        String fileName = System.currentTimeMillis()
+                + "_" + file.getOriginalFilename();
+
+        String uploadDir = System.getProperty("user.dir")
+                + "/uploads/";
+
+        File dir = new File(uploadDir);
+
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+
+        File destination = new File(uploadDir + fileName);
+
+        file.transferTo(destination);
+
+        lulusan.setFoto("/uploads/" + fileName);
     }
+
+    repository.save(lulusan);
+
+    return "redirect:/lulusan";
+}
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
