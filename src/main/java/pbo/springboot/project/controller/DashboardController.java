@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DashboardController {
 
     // Jalur utama yang menampilkan Dashboard Admin
-    @GetMapping("/")
+    @GetMapping("/admin")
     public String dashboard(){
         return "dashboard";
     }
