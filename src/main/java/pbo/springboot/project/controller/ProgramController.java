@@ -24,6 +24,7 @@ public class ProgramController {
         // Membuka file templates/program/index.html
         return "program/index";
     }
+
     // 2. Menampilkan Form Tambah Program
     @GetMapping("/program/add")
     public String showAddForm(Model model) {
@@ -40,11 +41,12 @@ public class ProgramController {
         // Setelah sukses, kembali ke halaman daftar program
         return "redirect:/program";
     }
+
     // 4. Menampilkan Form Edit berdasarkan ID data yang dipilih
     @GetMapping("/program/edit/{id}")
     public String showEditForm(@PathVariable("id") Long id, Model model) {
         Program program = programRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("Invalid program Id:" + id));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid program Id:" + id));
         model.addAttribute("program", program);
         return "program/edit";
     }

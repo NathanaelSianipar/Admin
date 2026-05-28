@@ -16,33 +16,27 @@ import pbo.springboot.project.repository.UserRepository;
 
 @Service
 public class CustomUserDetailService
-        implements UserDetailsService {
+                implements UserDetailsService {
 
-    @Autowired
-    private UserRepository repository;
+        @Autowired
+        private UserRepository repository;
 
-    @Override
-    public UserDetails loadUserByUsername(
-            String email
-    ) throws UsernameNotFoundException {
+        @Override
+        public UserDetails loadUserByUsername(
+                        String email) throws UsernameNotFoundException {
 
-        User user = repository.findByEmail(email)
+                User user = repository.findByEmail(email)
 
-                .orElseThrow(() ->
-                        new UsernameNotFoundException(
-                                "User tidak ditemukan"
-                        )
-                );
+                                .orElseThrow(() -> new UsernameNotFoundException(
+                                                "User tidak ditemukan"));
 
-        return new org.springframework.security.core.userdetails.User(
+                return new org.springframework.security.core.userdetails.User(
 
-                user.getEmail(),
+                                user.getEmail(),
 
-                user.getPassword(),
+                                user.getPassword(),
 
-                Collections.singletonList(
-                        new SimpleGrantedAuthority("ROLE_ADMIN")
-                )
-        );
-    }
+                                Collections.singletonList(
+                                                new SimpleGrantedAuthority("ROLE_ADMIN")));
+        }
 }

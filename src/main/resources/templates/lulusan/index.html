@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 
     <title>Lulusan</title>
@@ -7,104 +8,106 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 
 </head>
+
 <body>
 
-<div class="sidebar">
+    <div class="sidebar">
 
-    <div class="logo">
+        <div class="logo">
 
-        <img th:src="@{/images/logo.png}">
+            <img th:src="@{/images/logo.png}">
 
-        <h2>Komplid Academy</h2>
-
-    </div>
-
-    <ul>
-        <li><a href="/">Dashboard</a></li>
-        <li><a href="/tentang">Tentang Kami</a></li>
-        <li><a href="/lulusan" class="active">Lulusan</a></li>
-        <li><a href="/program">Program</a></li>
-        <li><a href="/galeri">Galeri</a></li>
-        <li><a href="/kontak">Kontak</a></li>
-        <li><a href="/logout">Logout</a></li>
-    </ul>
-
-</div>
-
-<div class="main">
-
-    <div class="table-container">
-
-        <div class="table-header">
-
-            <h2>Data Lulusan</h2>
-
-            <a href="/lulusan/create" class="btn">
-                + Tambah Lulusan
-            </a>
+            <h2>Komplid Academy</h2>
 
         </div>
 
-        <table class="table">
-
-            <thead>
-
-                <tr>
-                    <th>No</th>
-                    <th>Foto</th>
-                    <th>Nama</th>
-                    <th>Tahun</th>
-                    <th>Pekerjaan</th>
-                    <th>Aksi</th>
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr th:each="item, stat : ${data}">
-
-                    <td th:text="${stat.count}"></td>
-
-                    <td>
-                        <img th:src="${item.foto}" class="foto">
-                    </td>
-
-                    <td th:text="${item.nama}"></td>
-
-                    <td th:text="${item.tahunLulus}"></td>
-
-                    <td th:text="${item.pekerjaan}"></td>
-
-                    <td>
-
-                        <div class="action">
-
-                            <a th:href="@{/lulusan/edit/{id}(id=${item.id})}">
-                                <button class="btn edit">
-                                    Edit
-                                </button>
-                            </a>
-
-                            <a th:href="@{/lulusan/delete/{id}(id=${item.id})}">
-                                <button class="btn delete">
-                                    Delete
-                                </button>
-                            </a>
-
-                        </div>
-
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
+        <ul>
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/tentang">Tentang Kami</a></li>
+            <li><a href="/lulusan" class="active">Lulusan</a></li>
+            <li><a href="/program">Program</a></li>
+            <li><a href="/galeri">Galeri</a></li>
+            <li><a href="/kontak">Kontak</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
 
     </div>
 
-</div>
+    <div class="main">
+
+        <div class="table-container">
+
+            <div class="table-header">
+
+                <h2>Data Lulusan</h2>
+
+                <a href="/lulusan/create" class="btn">
+                    + Tambah Lulusan
+                </a>
+
+            </div>
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+                        <th>No</th>
+                        <th>Foto</th>
+                        <th>Nama</th>
+                        <th>Tahun</th>
+                        <th>Pekerjaan</th>
+                        <th>Aksi</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr th:each="item, stat : ${data}">
+
+                        <td th:text="${stat.count}"></td>
+
+                        <td>
+                            <img th:src="${item.foto}" class="foto">
+                        </td>
+
+                        <td th:text="${item.nama}"></td>
+
+                        <td th:text="${item.tahunLulus}"></td>
+
+                        <td th:text="${item.pekerjaan}"></td>
+
+                        <td>
+
+                            <div class="action">
+
+                                <a th:href="@{/lulusan/edit/{id}(id=${item.id})}">
+                                    <button class="btn edit">
+                                        Edit
+                                    </button>
+                                </a>
+
+                                <a th:href="@{/lulusan/delete/{id}(id=${item.id})}">
+                                    <button class="btn delete">
+                                        Delete
+                                    </button>
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
 
 </body>
+
 </html>

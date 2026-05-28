@@ -11,85 +11,77 @@
 
 <body>
 
-<div class="sidebar">
+    <div class="sidebar">
 
-    <div class="logo">
+        <div class="logo">
 
-        <img th:src="@{/images/logo.png}">
+            <img th:src="@{/images/logo.png}">
 
-        <h2>Komplid Academy</h2>
+            <h2>Komplid Academy</h2>
+
+        </div>
+
+        <ul>
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/tentang">Tentang Kami</a></li>
+            <li><a href="/lulusan">Lulusan</a></li>
+            <li><a href="/program">Program</a></li>
+            <li><a href="/galeri" class="active">Galeri</a></li>
+            <li><a href="/kontak">Kontak</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
 
     </div>
 
-    <ul>
-        <li><a href="/">Dashboard</a></li>
-        <li><a href="/tentang">Tentang Kami</a></li>
-        <li><a href="/lulusan">Lulusan</a></li>
-        <li><a href="/program">Program</a></li>
-        <li><a href="/galeri" class="active">Galeri</a></li>
-        <li><a href="/kontak">Kontak</a></li>
-        <li><a href="/logout">Logout</a></li>
-    </ul>
+    <div class="main">
 
-</div>
+        <div class="form-container">
 
-<div class="main">
+            <h2>Tambah Data Galeri</h2>
 
-    <div class="form-container">
+            <br>
 
-        <h2>Tambah Data Galeri</h2>
+            <form th:action="@{/galeri/save}" method="post" enctype="multipart/form-data" th:object="${galeri}">
 
-        <br>
+                <div class="form-group">
 
-        <form th:action="@{/galeri/save}"
-              method="post"
-              enctype="multipart/form-data"
-              th:object="${galeri}">
+                    <label>Judul</label>
 
-            <div class="form-group">
+                    <input type="text" th:field="*{judul}" class="form-control">
 
-                <label>Judul</label>
+                </div>
 
-                <input type="text"
-                       th:field="*{judul}"
-                       class="form-control">
+                <div class="form-group">
 
-            </div>
+                    <label>Deskripsi</label>
 
-            <div class="form-group">
+                    <textarea th:field="*{deskripsi}" class="form-control"></textarea>
 
-                <label>Deskripsi</label>
+                </div>
 
-                <textarea th:field="*{deskripsi}"
-                          class="form-control"></textarea>
+                <div class="form-group">
 
-            </div>
+                    <label>Upload Gambar</label>
 
-            <div class="form-group">
+                    <input type="file" name="file" class="form-control">
 
-                <label>Upload Gambar</label>
+                </div>
 
-                <input type="file"
-                       name="file"
-                       class="form-control">
-
-            </div>
-
-            <button class="btn">
-                Simpan
-            </button>
-
-            <a href="/galeri">
-                <button type="button" class="btn back">
-                    Batal
+                <button class="btn">
+                    Simpan
                 </button>
-            </a>
 
-        </form>
+                <a href="/galeri">
+                    <button type="button" class="btn back">
+                        Batal
+                    </button>
+                </a>
+
+            </form>
+
+        </div>
 
     </div>
-
-</div>
 
 </body>
 

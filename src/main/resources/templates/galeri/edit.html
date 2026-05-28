@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 
     <title>Edit Galeri</title>
@@ -7,90 +8,83 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 
 </head>
+
 <body>
 
-<div class="sidebar">
+    <div class="sidebar">
 
-    <div class="logo">
+        <div class="logo">
 
-        <img th:src="@{/images/logo.png}">
+            <img th:src="@{/images/logo.png}">
 
-        <h2>Komplid Academy</h2>
+            <h2>Komplid Academy</h2>
 
-    </div>
+        </div>
 
-    <ul>
-        <li><a href="/">Dashboard</a></li>
-        <li><a href="/tentang">Tentang Kami</a></li>
-        <li><a href="/lulusan">Lulusan</a></li>
-        <li><a href="/program">Program</a></li>
-        <li><a href="/galeri" class="active">Galeri</a></li>
-        <li><a href="/kontak">Kontak</a></li>
-        <li><a href="/logout">Logout</a></li>
-    </ul>
-
-</div>
-
-<div class="main">
-
-    <div class="form-container">
-
-        <h2>Edit Data Galeri</h2>
-
-        <br>
-
-        <form th:action="@{/galeri/save}"
-            method="post"
-            enctype="multipart/form-data"
-            th:object="${galeri}">
-
-            <input type="hidden"
-                   th:field="*{id}">
-
-            <div class="form-group">
-
-                <label>Judul</label>
-
-                <input type="text"
-                       th:field="*{judul}"
-                       class="form-control">
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Deskripsi</label>
-
-                <textarea th:field="*{deskripsi}"
-                          class="form-control"></textarea>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Upload Gambar</label>
-
-                <input type="file"
-                    name="file"
-                    class="form-control">
-
-            </div>
-
-            <button class="btn">
-                Update
-            </button>
-
-            <a href="/galeri">
-            <button type="button" class="btn back">
-                Batal
-            </button>
-            </a>
-
-        </form>
+        <ul>
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/tentang">Tentang Kami</a></li>
+            <li><a href="/lulusan">Lulusan</a></li>
+            <li><a href="/program">Program</a></li>
+            <li><a href="/galeri" class="active">Galeri</a></li>
+            <li><a href="/kontak">Kontak</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
 
     </div>
 
-</div>
+    <div class="main">
+
+        <div class="form-container">
+
+            <h2>Edit Data Galeri</h2>
+
+            <br>
+
+            <form th:action="@{/galeri/save}" method="post" enctype="multipart/form-data" th:object="${galeri}">
+
+                <input type="hidden" th:field="*{id}">
+
+                <div class="form-group">
+
+                    <label>Judul</label>
+
+                    <input type="text" th:field="*{judul}" class="form-control">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Deskripsi</label>
+
+                    <textarea th:field="*{deskripsi}" class="form-control"></textarea>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Upload Gambar</label>
+
+                    <input type="file" name="file" class="form-control">
+
+                </div>
+
+                <button class="btn">
+                    Update
+                </button>
+
+                <a href="/galeri">
+                    <button type="button" class="btn back">
+                        Batal
+                    </button>
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
 
 </body>
+
 </html>

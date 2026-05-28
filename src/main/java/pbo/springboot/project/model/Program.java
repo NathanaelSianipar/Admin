@@ -17,7 +17,7 @@ public class Program {
 
     @Column(name = "nama_program", nullable = false)
     private String namaProgram;
-    
+
     @Column(columnDefinition = "TEXT")
     private String deskripsi;
 
@@ -26,7 +26,7 @@ public class Program {
     // ==========================================
     // GETTER DAN SETTER
     // ==========================================
-    
+
     public Long getId() {
         return id;
     }
