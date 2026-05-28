@@ -15,12 +15,13 @@
     </div>
 
     <ul>
-        <li><a href="/">Dashboard</a></li>
+        <li><a href="/admin">Dashboard</a></li>
         <li><a href="/tentang">Tentang Kami</a></li>
         <li><a href="/lulusan">Lulusan</a></li>
         <li><a href="/program">Program</a></li>
         <li><a href="/galeri">Galeri</a></li>
         <li><a href="/kontak" class="active">Kontak</a></li>
+        <li><a href="/logout">Logout</a></li>
     </ul>
 </div>
 
@@ -31,24 +32,20 @@
         <form th:action="@{/kontak/save}" method="post" th:object="${kontak}">
             <input type="hidden" th:field="*{id}">
             <div class="form-group">
-                <label>Email</label>
-                <input type="email" th:field="*{email}" class="form-control" required>
+                <label>Founder</label>
+                <input type="text" th:field="*{founder}" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>Telepon</label>
                 <input type="text" th:field="*{telepon}" class="form-control" required>
             </div>
             <div class="form-group">
-                <label>Alamat</label>
-                <textarea th:field="*{alamat}" class="form-control" required></textarea>
-            </div>
-            <div class="form-group">
                 <label>Instagram</label>
                 <input type="text" th:field="*{instagram}" class="form-control">
             </div>
             <div class="form-group">
-                <label>Facebook</label>
-                <input type="text" th:field="*{facebook}" class="form-control">
+                <label>Tiktok</label>
+                <input type="text" th:field="*{tiktok}" class="form-control">
             </div>
             <button type="submit" class="btn">Simpan</button>
             <a href="/kontak"><button type="button" class="btn back">Back</button></a>

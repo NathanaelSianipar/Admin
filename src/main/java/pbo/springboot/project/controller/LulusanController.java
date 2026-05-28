@@ -43,9 +43,8 @@ public class LulusanController {
                     + "_"
                     + file.getOriginalFilename();
 
-            String uploadDir =
-        System.getProperty("user.dir")
-        + "/src/main/resources/static/uploads/";
+            String uploadDir = System.getProperty("user.dir")
+                    + "/src/main/resources/static/uploads/";
 
             File dir = new File(uploadDir);
 
@@ -82,9 +81,8 @@ public class LulusanController {
                     + "_"
                     + file.getOriginalFilename();
 
-            String uploadDir =
-        System.getProperty("user.dir")
-        + "/src/main/resources/static/uploads/";
+            String uploadDir = System.getProperty("user.dir")
+                    + "/src/main/resources/static/uploads/";
 
             File dir = new File(uploadDir);
 

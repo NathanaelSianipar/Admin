@@ -10,11 +10,10 @@ public class Kontak {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String email;
+    private String founder;
     private String telepon;
-    private String alamat;
     private String instagram;
-    private String facebook;
+    private String tiktok;
 
     public Long getId() {
         return id;
@@ -24,12 +23,12 @@ public class Kontak {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getFounder() {
+        return founder;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setFounder(String founder) {
+        this.founder = founder;
     }
 
     public String getTelepon() {
@@ -40,14 +39,6 @@ public class Kontak {
         this.telepon = telepon;
     }
 
-    public String getAlamat() {
-        return alamat;
-    }
-
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
-    }
-
     public String getInstagram() {
         return instagram;
     }
@@ -56,12 +47,12 @@ public class Kontak {
         this.instagram = instagram;
     }
 
-    public String getFacebook() {
-        return facebook;
+    public String getTiktok() {
+        return tiktok;
     }
 
-    public void setFacebook(String facebook) {
-        this.facebook = facebook;
+    public void setTiktok(String tiktok) {
+        this.tiktok = tiktok;
     }
 }
 
