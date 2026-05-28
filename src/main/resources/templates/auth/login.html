@@ -1,101 +1,87 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 
     <title>Login Admin</title>
 
     <link rel="stylesheet" th:href="@{/css/style.css}">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
 </head>
+
 <body>
 
-<div class="login-page">
+    <div class="login-page">
 
-    <!-- OVERLAY -->
+        <!-- OVERLAY -->
 
-    <div class="overlay"></div>
+        <div class="overlay"></div>
 
-    <!-- LOGIN CARD -->
+        <!-- LOGIN CARD -->
 
-    <div class="login-card">
+        <div class="login-card">
 
-        <!-- LOGO -->
+            <!-- LOGO -->
 
-        <div class="login-logo">
-
-            <img th:src="@{/images/logo.png}">
-
-            <h2>Komplid Academy</h2>
-
-        </div>
-
-        <!-- TITLE -->
-
-        <h1>
-            Welcome Back!
-        </h1>
-
-        <p>
-            Login untuk masuk ke dashboard admin
-        </p>
-
-        <!-- ERROR -->
-
-        <div th:if="${error}" class="error-box">
-
-            <span th:text="${error}"></span>
-
-        </div>
-
-        <!-- FORM -->
-
-        <form action="/login" method="post">
-
-            <div class="form-group">
-
-                <label>Email</label>
-
-                <input type="email"
-                       name="username"
-                       placeholder="Masukkan email"
-                       required>
-
+            <div class="login-logo">
+                <img th:src="@{/images/logo.png}">
+                <h2>Komplid Academy</h2>
             </div>
 
-            <div class="form-group">
+            <!-- TITLE -->
 
-                <label>Password</label>
+            <h1>
+                Welcome Back!
+            </h1>
 
-                <input type="password"
-                       name="password"
-                       placeholder="Masukkan password"
-                       required>
+            <p>
+                Login untuk masuk ke dashboard admin
+            </p>
 
+            <!-- ERROR -->
+
+            <div th:if="${error}" class="error-box">
+                <span th:text="${error}"></span>
             </div>
 
-            <button type="submit" class="btn-login">
-                Login
-            </button>
+            <!-- FORM -->
 
-        </form>
+            <form action="/login" method="post">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="username" placeholder="Masukkan email" required>
+                </div>
 
-        <!-- FOOTER -->
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Masukkan password" required>
+                </div>
 
-        <div class="login-footer">
+                <button type="submit" class="btn-login">
+                    Login
+                </button>
 
-            Belum punya akun?
+                <a href="/" class="btn-back">
+                    ← Kembali ke Halaman Utama
+                </a>
+            </form>
 
-            <a href="/register">
-                Register sekarang
-            </a>
+            <!-- FOOTER -->
+
+            <div class="login-footer">
+                Belum punya akun?
+                <a href="/register">
+                    Register sekarang
+                </a>
+            </div>
 
         </div>
 
     </div>
 
-</div>
-
 </body>
+
 </html>

@@ -41,21 +41,18 @@ public class GaleriController {
     @PostMapping("/save")
     public String save(
             @ModelAttribute Galeri galeri,
-            @RequestParam("file") MultipartFile file
-    ) throws IOException {
+            @RequestParam("file") MultipartFile file) throws IOException {
 
         if (!file.isEmpty()) {
 
             String uploadDir = System.getProperty("user.dir")
-                + "/uploads/";
+                    + "/uploads/";
 
-            String fileName =
-                    file.getOriginalFilename();
+            String fileName = file.getOriginalFilename();
 
             file.transferTo(
                     Paths.get(uploadDir + fileName)
-                            .toFile()
-            );
+                            .toFile());
 
             galeri.setGambar(fileName);
         }
@@ -68,11 +65,9 @@ public class GaleriController {
     @GetMapping("/edit/{id}")
     public String edit(
             @PathVariable Long id,
-            Model model
-    ) {
+            Model model) {
 
-        Galeri galeri =
-                galeriRepository.findById(id).orElse(null);
+        Galeri galeri = galeriRepository.findById(id).orElse(null);
 
         model.addAttribute("galeri", galeri);
 

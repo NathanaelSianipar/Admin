@@ -17,67 +17,62 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
 
         return new BCryptPasswordEncoder();
     }
 
     @Bean
     public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration config
-    ) throws Exception {
+            AuthenticationConfiguration config) throws Exception {
 
         return config.getAuthenticationManager();
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(
-            HttpSecurity http
-    ) throws Exception {
+            HttpSecurity http) throws Exception {
 
         http
-            .csrf(csrf -> csrf.disable())
+                .csrf(csrf -> csrf.disable())
 
-            .authorizeHttpRequests(auth -> auth
+                .authorizeHttpRequests(auth -> auth
 
-                .requestMatchers(
-                        "/",
-                        "/login",
-                        "/register",
-                        "/register/save",
-                        "/css/**",
-                        "/images/**",
-                        "/uploads/**"
-                ).permitAll()
+                        .requestMatchers(
+                                "/",
+                                "/login",
+                                "/register",
+                                "/register/save",
+                                "/css/**",
+                                "/images/**",
+                                "/uploads/**")
+                        .permitAll()
 
-                .requestMatchers("/admin/**")
-                .authenticated()
+                        .requestMatchers("/admin/**")
+                        .authenticated()
 
-                .anyRequest()
-                .permitAll()
-            )
+                        .anyRequest()
+                        .permitAll())
 
-            .formLogin(login -> login
+                .formLogin(login -> login
 
-                .loginPage("/login")
+                        .loginPage("/login")
 
-                .loginProcessingUrl("/login")
+                        .loginProcessingUrl("/login")
 
-                .defaultSuccessUrl("/admin", true)
+                        .defaultSuccessUrl("/admin", true)
 
-                .failureUrl("/login?error=true")
+                        .failureUrl("/login?error=true")
 
-                .permitAll()
-            )
+                        .permitAll())
 
-            .logout(logout -> logout
+                .logout(logout -> logout
 
-                .logoutUrl("/logout")
+                        .logoutUrl("/logout")
 
-                .logoutSuccessUrl("/login")
+                        .logoutSuccessUrl("/login")
 
-                .permitAll()
-            );
+                        .permitAll());
 
         return http.build();
     }

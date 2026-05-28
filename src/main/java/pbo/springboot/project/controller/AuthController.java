@@ -24,13 +24,13 @@ public class AuthController {
     private BCryptPasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
-    public String login(){
+    public String login() {
 
         return "auth/login";
     }
 
     @GetMapping("/register")
-    public String register(Model model){
+    public String register(Model model) {
 
         model.addAttribute("user", new User());
 
@@ -38,14 +38,11 @@ public class AuthController {
     }
 
     @PostMapping("/register/save")
-    public String save(@ModelAttribute User user){
+    public String save(@ModelAttribute User user) {
 
         user.setPassword(
-                passwordEncoder.encode(user.getPassword())
-        );
-
+                passwordEncoder.encode(user.getPassword()));
         repository.save(user);
-
         return "redirect:/login";
     }
 }

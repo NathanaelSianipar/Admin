@@ -8,13 +8,13 @@ public class DashboardController {
 
     // Jalur utama yang menampilkan Dashboard Admin
     @GetMapping("/admin")
-    public String dashboard(){
+    public String dashboard() {
         return "dashboard";
     }
 
     // Menyamakan rute /index agar memanggil file template yang sama persis
     @GetMapping("/index")
-    public String index(){
+    public String index() {
         return "dashboard";
     }
 }
