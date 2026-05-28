@@ -8,7 +8,6 @@ import org.springframework.web.multipart.MultipartFile;
 import pbo.springboot.project.model.Galeri;
 import pbo.springboot.project.repository.GaleriRepository;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
@@ -19,7 +18,7 @@ public class GaleriController {
     @Autowired
     private GaleriRepository galeriRepository;
 
-    // ================= ADMIN =================
+    //
 
     @GetMapping
     public String index(Model model) {
