@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Kontak</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <div class="logo">
+        <img th:src="@{/images/logo.png}">
+        <h2>Komplid Academy</h2>
+    </div>
+
+    <ul>
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/tentang">Tentang Kami</a></li>
+        <li><a href="/lulusan">Lulusan</a></li>
+        <li><a href="/program">Program</a></li>
+        <li><a href="/galeri">Galeri</a></li>
+        <li><a href="/kontak" class="active">Kontak</a></li>
+    </ul>
+</div>
+
+<div class="main">
+    <div class="table-container">
+        <div class="table-header">
+            <h2>Data Kontak</h2>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Email</th>
+                <th>Telepon</th>
+                <th>Alamat</th>
+                <th>Instagram</th>
+                <th>Facebook</th>
+                <th>Aksi</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="kontak, stat : ${kontakList}">
+                <td th:text="${stat.count}"></td>
+                <td th:text="${kontak.email}"></td>
+                <td th:text="${kontak.telepon}"></td>
+                <td th:text="${kontak.alamat}"></td>
+                <td th:text="${kontak.instagram}"></td>
+                <td th:text="${kontak.facebook}"></td>
+                <td>
+                    <div class="action">
+                        <a th:href="@{/kontak/edit/{id}(id=${kontak.id})}">
+                            <button class="btn edit">Edit</button>
+                        </a>
+                        <a th:href="@{/kontak/delete/{id}(id=${kontak.id})}">
+                            <button class="btn delete">Delete</button>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+
+</html>
