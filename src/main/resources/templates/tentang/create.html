@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Tambah Tentang</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <img th:src="@{/images/logo.png}">
+
+        <h2>Komplid Academy</h2>
+
+    </div>
+
+    <ul>
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/tentang" class="active">Tentang Kami</a></li>
+        <li><a href="/lulusan">Lulusan</a></li>
+        <li><a href="/program">Program</a></li>
+        <li><a href="/galeri">Galeri</a></li>
+        <li><a href="/kontak">Kontak</a></li>
+    </ul>
+
+</div>
+
+<div class="main">
+
+    <div class="form-container">
+
+        <h2>Tambah Data Tentang</h2>
+
+        <br>
+
+        <form th:action="@{/tentang/save}"
+              method="post"
+              th:object="${tentang}">
+
+            <div class="form-group">
+
+                <label>Judul</label>
+
+                <input type="text"
+                       th:field="*{judul}"
+                       class="form-control">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Deskripsi</label>
+
+                <textarea th:field="*{deskripsi}"
+                          class="form-control"></textarea>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Nama Gambar</label>
+
+                <input type="text"
+                       th:field="*{gambar}"
+                       class="form-control">
+
+            </div>
+
+            <button type="submit" class="btn">
+                Simpan
+            </button>
+
+            <a href="/tentang">
+                <button type="button" class="btn back">
+                    Back
+                </button>
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
