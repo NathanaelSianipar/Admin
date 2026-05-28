@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import pbo.springboot.project.model.Kontak;
+import pbo.springboot.project.model.Pesan;
 import pbo.springboot.project.repository.GaleriRepository;
 import pbo.springboot.project.repository.KontakRepository;
 import pbo.springboot.project.repository.LulusanRepository;
@@ -47,6 +48,7 @@ public class UserController {
                 // mengambil data kontak
                 Kontak kontak = kontakRepository.findAll().stream().findFirst().orElse(new Kontak());
                 model.addAttribute("kontak", kontak);
+                model.addAttribute("pesan", new Pesan());
 
                 return "user/index";
         }

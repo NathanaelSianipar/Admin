@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pesan</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo">
+            <img th:src="@{/images/logo.png}">
+            <h2>Komplid Academy</h2>
+        </div>
+        <ul>
+            <li><a th:href="@{/admin}">Dashboard</a></li>
+            <li><a th:href="@{/tentang}">Tentang Kami</a></li>
+            <li><a th:href="@{/lulusan}">Lulusan</a></li>
+            <li><a th:href="@{/program}">Program</a></li>
+            <li><a th:href="@{/galeri}">Galeri</a></li>
+            <li><a th:href="@{/kontak}">Kontak</a></li>
+            <li>
+                <a th:href="@{/admin/pesan}" class="active">
+                    Pesan
+                    <span th:if="${pendingCount > 0}" class="badge" th:text="${pendingCount}"></span>
+                </a>
+            </li>
+            <li><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <div class="table-container">
+            <div class="table-header">
+                <h2>Daftar Pesan</h2>
+            </div>
+
+            <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>Subjek</th>
+                        <th>Pesan</th>
+                        <th>Status</th>
+                        <th>Dikirim Pada</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="pesan, stat : ${pesanList}">
+                        <td th:text="${stat.count}"></td>
+                        <td th:text="${pesan.nama}"></td>
+                        <td th:text="${pesan.email}"></td>
+                        <td th:text="${pesan.subjek}"></td>
+                        <td th:text="${pesan.isi}"></td>
+                        <td th:text="${pesan.status}"></td>
+                        <td th:text="${pesan.dibuatPada}"></td>
+                        <td>
+                            <div class="action">
+                                <a th:href="@{/admin/pesan/confirm/{id}(id=${pesan.id})}">
+                                    <button class="btn edit">Konfirmasi</button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>
