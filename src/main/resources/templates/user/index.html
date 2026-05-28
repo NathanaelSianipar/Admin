@@ -88,42 +88,126 @@
     </nav>
 
     <!-- HERO -->
-<!-- HERO -->
-<section class="hero">
+    <!-- HERO -->
+    <section class="hero">
 
-    <div class="container">
+        <div class="container">
 
-        <div class="hero-content">
+            <div class="hero-content">
 
-            <span class="hero-tag">
-                # Webinar & Bimbel Terkomplid
-            </span>
+                <span class="hero-tag">
+                    # Webinar & Bimbel Terkomplid
+                </span>
 
-            <h1>
-                Komplid Academy.
-            </h1>
+                <h1>
+                    Komplid Academy.
+                </h1>
 
-            <p>
-                Komplid Academy adalah platform digital edukasi yang didirikan pada
-                2020 sebagai bagian dari komplid, komplid academy hadir untuk
-                memberikan layanan pendidikan, pelatihan dan bimbingan belajar yang
-                relevan dengan kebutuhan zaman. Platform ini dirancang untuk
-                membantu siswa dan masyarakat umum mempersiapkan diri
-                menghadapi tantangan pendidikan dan karier di masa depan
-            </p>
+                <p>
+                    Komplid Academy adalah platform digital edukasi yang didirikan pada
+                    2020 sebagai bagian dari komplid, komplid academy hadir untuk
+                    memberikan layanan pendidikan, pelatihan dan bimbingan belajar yang
+                    relevan dengan kebutuhan zaman. Platform ini dirancang untuk
+                    membantu siswa dan masyarakat umum mempersiapkan diri
+                    menghadapi tantangan pendidikan dan karier di masa depan
+                </p>
 
-            <a href="#program"
-               class="btn btn-primary hero-btn">
+                <a href="#program" class="btn btn-primary hero-btn">
 
-                Lihat Program →
+                    Lihat Program →
 
-            </a>
+                </a>
+
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+    <!-- TENTANG -->
+    <section id="tentang" class="tentang-section">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Tentang Kami
+            </h2>
+
+            <div class="tentang-wrapper" th:each="t : ${tentangList}">
+
+                <!-- GAMBAR -->
+                <div class="tentang-image">
+
+                    <img th:src="@{'/uploads/' + ${t.gambar}}" alt="Tentang Kami">
+
+                    <div class="quote-box">
+                        <span>❝</span>
+                        <p>
+                            Belajar hari ini, siap menghadapi masa depan.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- CONTENT -->
+                <div class="tentang-content">
+
+                    <span class="tag">
+                        KOMPLID ACADEMY
+                    </span>
+
+                    <h3 th:text="${t.judul}"></h3>
+
+                    <div class="line"></div>
+
+                    <p th:text="${t.deskripsi}"></p>
+
+                    <!-- FITUR -->
+                    <div class="fitur-list">
+
+                        <div class="fitur-item">
+
+                            <div class="icon-box">
+                                📘
+                            </div>
+
+                            <div>
+                                <h4>Paket Free</h4>
+
+                                <p>
+                                    Mengerjakan soal latihan yang dibuat untuk
+                                    mengasah kemampuan yang dimiliki.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="fitur-item">
+
+                            <div class="icon-box">
+                                📘
+                            </div>
+
+                            <div>
+                                <h4>Paket Premium</h4>
+
+                                <p>
+                                    Mendapatkan pembelajaran lebih intensif dan
+                                    pengalaman belajar yang lebih maksimal.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
     <!-- PROGRAM -->
     <section id="program">
@@ -176,7 +260,7 @@
 
                     <div class="card custom-card text-center">
 
-                        <img th:src="${a.foto}" class="alumni-img">
+                        <img th:src="@{${a.foto}}" class="alumni-img">
 
                         <div class="card-body">
 

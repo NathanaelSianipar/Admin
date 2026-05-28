@@ -224,6 +224,168 @@ footer p {
     margin: 0;
 }
 
+/* ================= TENTANG ================= */
+
+.tentang-section{
+    padding: 100px 0;
+    background: #f4f6f9;
+}
+
+.section-title{
+    text-align: center;
+    font-size: 48px;
+    font-weight: 700;
+    color: #071c3d;
+    margin-bottom: 70px;
+    position: relative;
+}
+
+.section-title::after{
+    content: "";
+    width: 90px;
+    height: 5px;
+    background: #1c8ef9;
+    display: block;
+    margin: 15px auto;
+    border-radius: 10px;
+}
+
+.tentang-wrapper{
+    background: white;
+    border-radius: 30px;
+    padding: 40px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    flex-wrap: wrap;
+}
+
+.tentang-image{
+    flex: 1;
+    position: relative;
+}
+
+.tentang-image img{
+    width: 100%;
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+.quote-box{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 250px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.quote-box span{
+    font-size: 45px;
+    color: #1c8ef9;
+    font-weight: bold;
+}
+
+.quote-box p{
+    margin-top: 10px;
+    font-size: 18px;
+    color: #444;
+    line-height: 1.5;
+}
+
+.tentang-content{
+    flex: 1;
+}
+
+.tag{
+    background: #e8f1ff;
+    color: #1c8ef9;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.tentang-content h3{
+    font-size: 50px;
+    font-weight: 700;
+    color: #071c3d;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.line{
+    width: 80px;
+    height: 5px;
+    background: #1c8ef9;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.tentang-content p{
+    font-size: 19px;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 40px;
+}
+
+.fitur-list{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.fitur-item{
+    display: flex;
+    gap: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #ddd;
+}
+
+.icon-box{
+    width: 70px;
+    height: 70px;
+    background: #edf5ff;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+.fitur-item h4{
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #071c3d;
+}
+
+.fitur-item p{
+    margin: 0;
+    font-size: 18px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 992px){
+
+    .tentang-wrapper{
+        flex-direction: column;
+    }
+
+    .tentang-content h3{
+        font-size: 36px;
+    }
+
+    .section-title{
+        font-size: 38px;
+    }
+
+}
+
 /* RESPONSIVE */
 
 @media(max-width:546px) {
