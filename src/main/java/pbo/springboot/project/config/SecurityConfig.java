@@ -41,14 +41,20 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
 
                 .requestMatchers(
+                        "/",
                         "/login",
                         "/register",
                         "/register/save",
                         "/css/**",
-                        "/images/**"
+                        "/images/**",
+                        "/uploads/**"
                 ).permitAll()
 
-                .anyRequest().authenticated()
+                .requestMatchers("/admin/**")
+                .authenticated()
+
+                .anyRequest()
+                .permitAll()
             )
 
             .formLogin(login -> login
@@ -57,7 +63,7 @@ public class SecurityConfig {
 
                 .loginProcessingUrl("/login")
 
-                .defaultSuccessUrl("/", true)
+                .defaultSuccessUrl("/admin", true)
 
                 .failureUrl("/login?error=true")
 
