@@ -17,18 +17,18 @@ public class ProgramController {
     @Autowired
     private ProgramRepository programRepository;
 
+    // 1. Menampilkan Semua Data Program
     @GetMapping("/program")
     public String index(Model model) {
-        // Mengirim data list program ke html
+        // Mengirim data list program ke html (SINKRON dengan th:each="program, iter : ${listProgram}")
         model.addAttribute("listProgram", programRepository.findAll());
-        // Membuka file templates/program/index.html
         return "program/index";
     }
 
     // 2. Menampilkan Form Tambah Program
-    @GetMapping("/program/add")
+    // DIUBAH ke /program/create agar cocok dengan link di index.html kamu
+    @GetMapping("/program/create")
     public String showAddForm(Model model) {
-        // Mengirim objek kosong sebagai wadah input form
         model.addAttribute("program", new Program());
         return "program/create";
     }
@@ -36,9 +36,7 @@ public class ProgramController {
     // 3. Memproses Penyimpanan Data ke Database
     @PostMapping("/program/save")
     public String saveProgram(@ModelAttribute("program") Program program) {
-        // Otomatis insert data ke tabel MySQL
         programRepository.save(program);
-        // Setelah sukses, kembali ke halaman daftar program
         return "redirect:/program";
     }
 
@@ -55,7 +53,7 @@ public class ProgramController {
     @PostMapping("/program/update/{id}")
     public String updateProgram(@PathVariable("id") Long id, @ModelAttribute("program") Program program) {
         program.setId(id);
-        programRepository.save(program); // Mengupdate data yang id-nya sama
+        programRepository.save(program); 
         return "redirect:/program";
     }
 
