@@ -5,14 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import pbo.springboot.project.repository.ProgramRepository;
+import pbo.springboot.project.repository.TentangRepository;
 import pbo.springboot.project.model.Kontak;
 import pbo.springboot.project.repository.GaleriRepository;
 import pbo.springboot.project.repository.KontakRepository;
 import pbo.springboot.project.repository.LulusanRepository;
-import pbo.springboot.project.repository.ProgramRepository;
 
 @Controller
 public class UserController {
+
+        @Autowired
+        private TentangRepository tentangRepository;
 
         @Autowired
         private ProgramRepository programRepository;
@@ -28,6 +32,11 @@ public class UserController {
 
         @GetMapping("/")
         public String home(Model model) {
+
+                // mengambil data tentang kami
+                model.addAttribute(
+                                "tentangList",
+                                tentangRepository.findAll());
 
                 // mengambil data program
                 model.addAttribute(

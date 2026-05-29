@@ -15,41 +15,45 @@
     </div>
 
     <ul>
-        <li><a href="/">Dashboard</a></li>
+        <li><a href="/admin">Dashboard</a></li>
         <li><a href="/tentang">Tentang Kami</a></li>
         <li><a href="/lulusan">Lulusan</a></li>
         <li><a href="/program">Program</a></li>
         <li><a href="/galeri">Galeri</a></li>
         <li><a href="/kontak" class="active">Kontak</a></li>
+        <li><a href="/logout">Logout</a></li>
     </ul>
+
 </div>
 
 <div class="main">
     <div class="table-container">
         <div class="table-header">
             <h2>Data Kontak</h2>
+
+            <a href="/kontak/create" class="btn">
+                + Tambah kontak
+            </a>
         </div>
 
         <table class="table">
             <thead>
             <tr>
                 <th>No</th>
-                <th>Email</th>
+                <th>Founder</th>
                 <th>Telepon</th>
-                <th>Alamat</th>
                 <th>Instagram</th>
-                <th>Facebook</th>
+                <th>Tiktok</th>
                 <th>Aksi</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="kontak, stat : ${kontakList}">
                 <td th:text="${stat.count}"></td>
-                <td th:text="${kontak.email}"></td>
+                <td th:text="${kontak.founder}"></td>
                 <td th:text="${kontak.telepon}"></td>
-                <td th:text="${kontak.alamat}"></td>
                 <td th:text="${kontak.instagram}"></td>
-                <td th:text="${kontak.facebook}"></td>
+                <td th:text="${kontak.tiktok}"></td>
                 <td>
                     <div class="action">
                         <a th:href="@{/kontak/edit/{id}(id=${kontak.id})}">

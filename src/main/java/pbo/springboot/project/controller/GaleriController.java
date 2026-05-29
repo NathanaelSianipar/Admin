@@ -10,6 +10,7 @@ import pbo.springboot.project.repository.GaleriRepository;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.io.File;
 
 @Controller
 @RequestMapping("/galeri")
@@ -38,29 +39,56 @@ public class GaleriController {
         return "galeri/create";
     }
 
-    @PostMapping("/save")
-    public String save(
-            @ModelAttribute Galeri galeri,
-            @RequestParam("file") MultipartFile file) throws IOException {
+@PostMapping("/save")
+public String save(
+        @ModelAttribute Galeri galeri,
+        @RequestParam("file") MultipartFile file
+) throws IOException {
 
-        if (!file.isEmpty()) {
+    if (!file.isEmpty()) {
 
-            String uploadDir = System.getProperty("user.dir")
-                    + "/uploads/";
+        String fileName =
+                System.currentTimeMillis()
+                + "_"
+                + file.getOriginalFilename();
 
-            String fileName = file.getOriginalFilename();
+        String uploadDir =
+                System.getProperty("user.dir")
+                + "/src/main/resources/static/uploads/";
 
-            file.transferTo(
-                    Paths.get(uploadDir + fileName)
-                            .toFile());
+        File dir = new File(uploadDir);
 
-            galeri.setGambar(fileName);
+        if (!dir.exists()) {
+            dir.mkdirs();
         }
 
-        galeriRepository.save(galeri);
+        File destination =
+                new File(dir, fileName);
 
-        return "redirect:/galeri";
+        file.transferTo(destination);
+
+        galeri.setGambar(fileName);
+
+    } else {
+
+        if (galeri.getId() != null) {
+
+            Galeri dataLama =
+                    galeriRepository.findById(galeri.getId())
+                            .orElse(null);
+
+            if (dataLama != null) {
+                galeri.setGambar(
+                        dataLama.getGambar()
+                );
+            }
+        }
     }
+
+    galeriRepository.save(galeri);
+
+    return "redirect:/galeri";
+}
 
     @GetMapping("/edit/{id}")
     public String edit(

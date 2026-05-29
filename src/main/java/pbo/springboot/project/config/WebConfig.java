@@ -7,15 +7,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-        @Override
-        public void addResourceHandlers(
-                        ResourceHandlerRegistry registry) {
+    @Override
+    public void addResourceHandlers(
+            ResourceHandlerRegistry registry) {
 
-                String path = System.getProperty("user.dir")
-                                + "/uploads/";
-
-                registry.addResourceHandler("/uploads/**")
-                                .addResourceLocations(
-                                                "file:" + path);
-        }
+        registry.addResourceHandler("/uploads/**")
+                .addResourceLocations(
+                        "file:src/main/resources/static/uploads/"
+                );
+    }
 }

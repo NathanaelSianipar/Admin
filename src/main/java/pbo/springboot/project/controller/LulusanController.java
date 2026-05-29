@@ -33,16 +33,18 @@ public class LulusanController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute Lulusan lulusan,
+    public String save(
+            @ModelAttribute Lulusan lulusan,
             @RequestParam("fotoFile") MultipartFile file) throws IOException {
 
         if (!file.isEmpty()) {
 
             String fileName = System.currentTimeMillis()
-                    + "_" + file.getOriginalFilename();
+                    + "_"
+                    + file.getOriginalFilename();
 
             String uploadDir = System.getProperty("user.dir")
-                    + "/uploads/";
+                    + "/src/main/resources/static/uploads/";
 
             File dir = new File(uploadDir);
 
@@ -50,7 +52,7 @@ public class LulusanController {
                 dir.mkdirs();
             }
 
-            File destination = new File(uploadDir + fileName);
+            File destination = new File(dir, fileName);
 
             file.transferTo(destination);
 
@@ -69,16 +71,18 @@ public class LulusanController {
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute Lulusan lulusan,
+    public String update(
+            @ModelAttribute Lulusan lulusan,
             @RequestParam("fotoFile") MultipartFile file) throws IOException {
 
         if (!file.isEmpty()) {
 
             String fileName = System.currentTimeMillis()
-                    + "_" + file.getOriginalFilename();
+                    + "_"
+                    + file.getOriginalFilename();
 
             String uploadDir = System.getProperty("user.dir")
-                    + "/uploads/";
+                    + "/src/main/resources/static/uploads/";
 
             File dir = new File(uploadDir);
 
@@ -86,11 +90,20 @@ public class LulusanController {
                 dir.mkdirs();
             }
 
-            File destination = new File(uploadDir + fileName);
+            File destination = new File(dir, fileName);
 
             file.transferTo(destination);
 
             lulusan.setFoto("/uploads/" + fileName);
+
+        } else {
+
+            Lulusan dataLama = repository.findById(lulusan.getId())
+                    .orElse(null);
+
+            if (dataLama != null) {
+                lulusan.setFoto(dataLama.getFoto());
+            }
         }
 
         repository.save(lulusan);

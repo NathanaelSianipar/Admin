@@ -42,7 +42,8 @@
 
         <form th:action="@{/tentang/save}"
               method="post"
-              th:object="${tentang}">
+              th:object="${tentang}"
+              enctype="multipart/form-data">
 
             <div class="form-group">
 
@@ -65,10 +66,10 @@
 
             <div class="form-group">
 
-                <label>Nama Gambar</label>
+                <label>Gambar</label>
 
-                <input type="text"
-                       th:field="*{gambar}"
+                <input type="file"
+                       name="fotoFileTentang"
                        class="form-control">
 
             </div>

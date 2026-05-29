@@ -1,9 +1,13 @@
 package pbo.springboot.project.controller;
 
+import java.io.IOException;
+import java.nio.file.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import pbo.springboot.project.model.Tentang;
 import pbo.springboot.project.repository.TentangRepository;
@@ -12,81 +16,115 @@ import pbo.springboot.project.repository.TentangRepository;
 @RequestMapping("/tentang")
 public class TentangController {
 
-    @Autowired
-    private TentangRepository tentangRepository;
+        @Autowired
+        private TentangRepository tentangRepository;
 
-    // ================= ADMIN =================
+        // ================= ADMIN =================
 
-    @GetMapping
-    public String index(Model model) {
+        @GetMapping
+        public String index(Model model) {
 
-        model.addAttribute(
-                "tentangList",
-                tentangRepository.findAll()
+                model.addAttribute(
+                                "tentangList",
+                                tentangRepository.findAll());
+
+                return "tentang/index";
+        }
+
+        @GetMapping("/create")
+        public String create(Model model) {
+
+                model.addAttribute(
+                                "tentang",
+                                new Tentang());
+
+                return "tentang/create";
+        }
+
+        @PostMapping("/save")
+public String save(
+        @ModelAttribute Tentang tentang,
+        @RequestParam("fotoFileTentang") MultipartFile file
+) throws IOException {
+
+    // CEK JIKA ADA FILE BARU
+    if (!file.isEmpty()) {
+
+        String fileName = file.getOriginalFilename();
+
+        String uploadDir =
+                "src/main/resources/static/uploads/";
+
+        Path uploadPath =
+                Paths.get(uploadDir);
+
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+
+        Files.copy(
+                file.getInputStream(),
+                uploadPath.resolve(fileName),
+                StandardCopyOption.REPLACE_EXISTING
         );
 
-        return "tentang/index";
+        tentang.setGambar(fileName);
+
+    } else {
+
+        // AMBIL GAMBAR LAMA SAAT EDIT
+        if (tentang.getId() != null) {
+
+            Tentang dataLama =
+                    tentangRepository.findById(tentang.getId())
+                            .orElse(null);
+
+            if (dataLama != null) {
+                tentang.setGambar(
+                        dataLama.getGambar()
+                );
+            }
+        }
     }
 
-    @GetMapping("/create")
-    public String create(Model model) {
+    tentangRepository.save(tentang);
 
-        model.addAttribute(
-                "tentang",
-                new Tentang()
-        );
+    return "redirect:/tentang";
+}
 
-        return "tentang/create";
-    }
+        @GetMapping("/edit/{id}")
+        public String edit(
+                        @PathVariable Long id,
+                        Model model) {
 
-    @PostMapping("/save")
-    public String save(
-            @ModelAttribute Tentang tentang
-    ) {
+                Tentang tentang = tentangRepository.findById(id)
+                                .orElse(null);
 
-        tentangRepository.save(tentang);
+                model.addAttribute(
+                                "tentang",
+                                tentang);
 
-        return "redirect:/tentang";
-    }
+                return "tentang/edit";
+        }
 
-    @GetMapping("/edit/{id}")
-    public String edit(
-            @PathVariable Long id,
-            Model model
-    ) {
+        @GetMapping("/delete/{id}")
+        public String delete(
+                        @PathVariable Long id) {
 
-        Tentang tentang =
-                tentangRepository.findById(id)
-                        .orElse(null);
+                tentangRepository.deleteById(id);
 
-        model.addAttribute(
-                "tentang",
-                tentang
-        );
+                return "redirect:/tentang";
+        }
 
-        return "tentang/edit";
-    }
+        // ================= USER =================
 
-    @GetMapping("/delete/{id}")
-    public String delete(
-            @PathVariable Long id
-    ) {
+        @GetMapping("/user")
+        public String user(Model model) {
 
-        tentangRepository.deleteById(id);
+                model.addAttribute(
+                                "tentangList",
+                                tentangRepository.findAll());
 
-        return "redirect:/tentang";
-    }
-
-    // ================= USER =================
-
-    @GetMapping("/user")
-    public String user(Model model) {
-
-        model.addAttribute(
-                "tentangList",
-                tentangRepository.findAll()
-        );
-
-        return "tentang/user";
-    }
+                return "tentang/user";
+        }
 }
